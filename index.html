@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="Expensify">
+
+<head>
+  <meta charset="utf-8" />
+
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <div ng-view></div>
+    </div>
+  </div>
+
+  <!-- modules -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+  <!-- css styling -->
+  <link rel="stylesheet" type="text/css" href="app/css/styling.css"/>
+
+  <!-- main configuration -->
+  <script src="app/controllers/app.js"></script>
+
+  <!-- services -->
+  <script src="app/services/service.transaction.js"></script>
+  <script src="app/services/service.auth.js"></script>
+
+  <!-- controllers -->
+  <script src="app/controllers/controller.auth.js"></script>
+  <script src="app/controllers/controller.home.js"></script>
+</body>
+
+</html>

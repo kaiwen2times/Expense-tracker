@@ -1,0 +1,63 @@
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand">Welcome!</div>
+        </div>
+        <div class="nav navbar-nav navbar-right">
+            <button type="button" ng-click="logout()" class="btn btn-danger">Logout</button>
+        </div>
+        </div>
+    </div>
+</nav>
+<div class="container" ng-show="loading">
+     <h3>This may take a few seconds</h3>
+    <button class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</button>
+</div>
+<div class="container" ng-show="!loading">
+    <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <ul class="nav">
+                <div ng-show="transactionError" class="alert alert-danger">Invalid Input</div>
+                <form name="transactionForm" ng-submit="createTransaction(transactionForm.$valid)" novalidate="novalidate">
+                    <div class="form-group" ng-class="{'has-success':transactionForm.merchant.$valid}">
+                        <label>Merchant Name</label>
+                        <input type="text" name="merchant" class="form-control" id="merchant" ng-model="merchant" placeholder="Enter Merchant Name" required="required">
+                    </div>
+                    <div class="form-group" ng-class="{'has-success':transactionForm.amount.$valid}">
+                        <label>Amount</label>
+                        <input type="number" name="amount" class="form-control" id="amount" ng-model="amount" placeholder="Enter Amount In Pennies" required="required">
+                    </div>
+                    <div class="form-group" ng-class="{'has-success':transactionForm.date.$valid}">
+                        <label>Date</label>
+                        <input type="date" name="date" class="form-control" id="date" placeholder="mm/dd/yyyy" ng-model="date" required="required">
+                    </div>
+                    <div class="form-group" ng-class="{'has-success':transactionForm.currency.$valid}">
+                        <label>Currency</label>
+                        <input type="text" name="currency" class="form-control" id="currency" ng-model="currency" placeholder="For Example: USD" required="required">
+                    </div>
+                    <button type="submit" class="btn btn-success">Add</button>
+                </form>            
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <div class="form-group pull-right">
+                <input type="text" class="search form-control" placeholder="What you looking for?" ng-model="searchText">
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <th>Merchant</th>
+                    <th>Amout</th>
+                    <th>Date</th>
+                    <th>Inserted Date</th>
+                </thead>
+                <tr ng-repeat="entry in displayData">
+                    <td>{{entry.merchant}}</td>
+                    <td>${{entry.amount}}  {{entry.currency}}</td>
+                    <td>{{entry.created}}</td>
+                    <td>{{entry.inserted}}</td>
+                </tr>
+            </table>
+            <pagination boundary-links="true" max-size="9" items-per-page="pageSize" total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+        </div>
+    </div>
+</div>
